@@ -14,21 +14,60 @@
      display:flex;
      align-items: center;
      position:fixed;
-     top: 6px;
-     right: 6px;
+     top: 8px;
+     right: 8px;
      color: rgb(146, 135, 135);
+     z-index: 10;
  }
- .tools>.draw{
+ .tools-colors{
+     padding: 0 4px;
+     display:flex;
+     align-items: center;
+     height: 40px;
+     margin-right: 4px;
+     list-style-type: none;
+     border-radius: 4px;
+     border: 1px solid rgba(146, 143, 143,0.2);
+     box-shadow:0 0 2px  rgb(248, 5, 5,0.5);
+ }
+ .tools-colors>li{
+     width: 22px;
+     height: 22px;
+     margin: 0 4px;
+     text-align: center;
+     border-radius: 4px;
+ }
+.tools-colors>li#black{
+    background-color: black;
+  }
+.tools-colors>li#red{
+    background-color: #ff4500;
+  }
+.tools-colors>li#yellow{
+    background-color: #FF9000; 
+}
+.tools-colors>li#green{
+    background-color: #00b060;
+  }
+.tools-colors>li#blue{
+    background-color: #0a64a4;
+  }
+  
+ .tools>.tools-draw{
      display: flex;
      font-size: 30px;
      list-style-type: none;
  }
- .draw>li{
+ .tools-draw>li{
     border-radius: 4px;
-    box-shadow:0 0 5px rgba(146, 143, 143,0.2);
+    box-shadow:0 0 5px rgba(146, 143, 143,0.4);
     margin: 0 4px;
  }
-.line{
+ .draw-pen{
+    display: flex;
+    align-items: center;
+}
+.pen-line{
     display: flex;
     align-items: center;
     height: 30px;
@@ -38,18 +77,13 @@
     border: 1px solid rgba(146, 143, 143,0.2);
     border-radius: 4px;
  }
- .line>li{
+ .pen-line>li{
     display: flex;
     height: 24px;
     background-color: rgb(146, 135, 135);
     margin: 0 8px;
     
  }
- .pen{
-    display: flex;
-    align-items: center;
-   
-}
  .fine{
     width: 2px;
  }
@@ -60,12 +94,18 @@
     width: 6px;
  }
 
- .draw>li.active{
+
+ .tools-draw>li.active{
      color: #FF4500;
      border: 1px solid rgba(146, 143, 143,0.2);
      box-shadow:0 0 2px  rgb(248, 5, 5,0.5);
      margin: 0 4px;
  }
- .line>li.active_line{
+ .pen-line>li.active_line{
     background-color: #000;
+}
+.tools-colors>li.active-colors{
+    width: 28px;
+    height: 28px;
+    box-shadow:0 0 5px rgba(146, 143, 143,1);
 }
