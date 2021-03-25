@@ -97,25 +97,27 @@ function monitorUserActions(canvas) {
             for (let touch of e.changedTouches) {
                 x = Math.floor(touch.clientX)
                 y = Math.floor(touch.clientY)
+                console.log(x, y);
                 if (!isEraser) {
-                    // point[touch.identifier] = { x: x, y: y }
-                    drawPoint(x, y, ctx.radius)
+                    lineStartPoint = { x: x, y: y }
+                    drawPoint()
                 } else {
                     ctx.clearRect(x - 5, y - 5, 10, 10)
                 }
             }
         })
-        canvas.addEventListener('touchmove', (originalPoint, e) => {
+        canvas.addEventListener('touchmove', (e) => {
             e.preventDefault()
             let x, y, newPoint = {}
             for (let touch of e.changedTouches) {
                 x = Math.floor(touch.clientX)
                 y = Math.floor(touch.clientY)
-                if (!eraserEnabled) {
+                if (!isEraser) {
                     //newPoint[touch.identifier] = { x: x, y: y }
-                    drawPoint(x, y, ctx.radius)           //需要添加此函数才不会使得画出来的线在lineWidth变大时不完整
-                    drawLine(originalPoint[touch.identifier].x, originalPoint[touch.identifier].y, newPoint[touch.identifier].x, newPoint[touch.identifier].y)
-                    originalPoint[touch.identifier] = newPoint[touch.identifier]
+                    lineToPoint = { x: x, y: y }
+                    drawPoint()           //需要添加此函数才不会使得画出来的线在lineWidth变大时不完整
+                    drawLine()
+                    //originalPoint[touch.identifier] = newPoint[touch.identifier]
                 }
                 else {
                     ctx.clearRect(x - 8, y - 8, 16, 16)
