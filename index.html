@@ -7,11 +7,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>我的画板</title>
     <link rel="stylesheet" href="./css/index.css">
+    <script src="https://at.alicdn.com/t/font_2444855_vzn6v1l6ad.js"></script>
 </head>
 
 <body>
     <canvas id="main"></canvas>
+
+    <div class="tools">
+        <!-- <input type="color"> -->
+
+        <ul class="draw">
+            <li class="pen active">
+                <ul class="line">
+
+                    <li class="fine active_line"></li>
+                    <li class="middle"></li>
+                    <li class="crude"></li>
+
+                </ul>
+                <svg class="icon " aria-hidden="true">
+                    <use xlink:href="#i-pen"></use>
+                </svg>
+            </li>
+            <li class="active">
+                <svg class="icon " aria-hidden="true">
+                    <use xlink:href="#i-xiangpica"></use>
+                </svg>
+            </li>
+            <li>
+                <svg class="icon " aria-hidden="true">
+                    <use xlink:href="#i-clean"></use>
+                </svg>
+            </li>
+            <li>
+                <svg class="icon " aria-hidden="true">
+                    <use xlink:href="#i-baocun"></use>
+                </svg>
+            </li>
+        </ul>
+    </div>
+
     <script src="./js/index.js"></script>
+
 </body>
 
 </html>

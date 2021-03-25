@@ -2,3 +2,70 @@
     margin: 0;
     padding: 0;
 }
+.icon {
+    width: 1em; 
+    height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+    margin: 0 8px;
+ }
+ .tools{
+     display:flex;
+     align-items: center;
+     position:fixed;
+     top: 6px;
+     right: 6px;
+     color: rgb(146, 135, 135);
+ }
+ .tools>.draw{
+     display: flex;
+     font-size: 30px;
+     list-style-type: none;
+ }
+ .draw>li{
+    border-radius: 4px;
+    box-shadow:0 0 5px rgba(146, 143, 143,0.2);
+    margin: 0 4px;
+ }
+.line{
+    display: flex;
+    align-items: center;
+    height: 30px;
+    list-style-type: none;
+    padding: 0;
+    margin-left: 2px;
+    border: 1px solid rgba(146, 143, 143,0.2);
+    border-radius: 4px;
+ }
+ .line>li{
+    display: flex;
+    height: 24px;
+    background-color: rgb(146, 135, 135);
+    margin: 0 8px;
+    
+ }
+ .pen{
+    display: flex;
+    align-items: center;
+   
+}
+ .fine{
+    width: 2px;
+ }
+ .middle{
+    width: 4px;
+ }
+ .crude{
+    width: 6px;
+ }
+
+ .draw>li.active{
+     color: #FF4500;
+     border: 1px solid rgba(146, 143, 143,0.2);
+     box-shadow:0 0 2px  rgb(248, 5, 5,0.5);
+     margin: 0 4px;
+ }
+ .line>li.active_line{
+    background-color: #000;
+}
