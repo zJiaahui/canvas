@@ -43,6 +43,7 @@
      text-align: center;
      border-radius: 4px;
      cursor: pointer;
+     transition:all 0.2s;
  }
 .tools-colors>li#black{
     background-color: black;
@@ -149,7 +150,7 @@
         margin: 4px 0;
         text-align: center;
         border-radius: 4px;
-        transition:all 3s;
+        transition:all 0.2s;
     }
     .active-tools-colors-none{
         display: none;
