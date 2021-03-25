@@ -101,7 +101,7 @@
      box-shadow:0 0 2px  rgb(248, 5, 5,0.5);
      margin: 0 4px;
  }
- .pen-line>li.active_line{
+.pen-line>li.active_line{
     background-color: #000;
 }
 .tools-colors>li.active-colors{
@@ -109,3 +109,27 @@
     height: 28px;
     box-shadow:0 0 5px rgba(146, 143, 143,1);
 }
+
+@media screen and (max-width: 966px) {
+    .tools-colors{
+        position:fixed;
+        top: 58px;
+        right: 8px;
+        padding: 0 4px;
+        display:flex;
+        height: 160px;
+        flex-direction: column;
+        margin-right: 4px;
+        list-style-type: none;
+        border-radius: 4px;
+        border: 1px solid rgba(146, 143, 143,0.2);
+        box-shadow:0 0 2px  rgb(248, 5, 5,0.5);
+    }
+    .tools-colors>li{
+        width: 22px;
+        height: 22px;
+        margin: 4px 0;
+        text-align: center;
+        border-radius: 4px;
+    }
+  }
