@@ -93,13 +93,13 @@
     cursor: pointer;
  }
  #fine{
-    width: 2px;
- }
- #middle{
     width: 4px;
  }
- #crude{
+ #middle{
     width: 6px;
+ }
+ #crude{
+    width: 10px;
  }
 
 
@@ -150,5 +150,8 @@
         margin: 4px 0;
         text-align: center;
         border-radius: 4px;
+    }
+    .active-tools-colors-none{
+        display: none;
     }
   }

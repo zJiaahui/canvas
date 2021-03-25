@@ -108,7 +108,7 @@ function monitorUserActions(canvas) {
         })
         canvas.addEventListener('touchmove', (e) => {
             e.preventDefault()
-            let x, y, newPoint = {}
+            let x, y
             for (let touch of e.changedTouches) {
                 x = Math.floor(touch.clientX)
                 y = Math.floor(touch.clientY)
@@ -117,7 +117,6 @@ function monitorUserActions(canvas) {
                     lineToPoint = { x: x, y: y }
                     drawPoint()           //需要添加此函数才不会使得画出来的线在lineWidth变大时不完整
                     drawLine()
-                    //originalPoint[touch.identifier] = newPoint[touch.identifier]
                 }
                 else {
                     ctx.clearRect(x - 8, y - 8, 16, 16)
@@ -125,7 +124,7 @@ function monitorUserActions(canvas) {
             }
         })
         canvas.addEventListener('touchcancel', () => {
-            alert("Oops! 是不是你的第六个小指头打断了画画~ !!(•'╻'•)꒳ᵒ꒳ᵎᵎᵎ \n\n乖，听话，最多只能用五个指头哦！")
+            alert("Oops! 小指头太多啦~ !!(•'╻'•)꒳ᵒ꒳ᵎᵎᵎ \n\n忙不过了哦！")
         })
     }
     else {
