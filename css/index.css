@@ -137,6 +137,7 @@
         padding: 0 4px;
         display:flex;
         height: 160px;
+        width: 40px;
         flex-direction: column;
         margin-right: 4px;
         list-style-type: none;
