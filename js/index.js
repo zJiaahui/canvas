@@ -90,7 +90,6 @@ baocun.addEventListener("click", function () {
 function monitorUserActions(canvas) {
     if (document.body.ontouchstart !== undefined) {
         //触屏设备
-
         canvas.addEventListener('touchstart', function (e) {
             e.preventDefault()
             let x, y
@@ -124,7 +123,7 @@ function monitorUserActions(canvas) {
             }
         })
         canvas.addEventListener('touchcancel', () => {
-            alert("Oops! 小指头太多啦~ !!(•'╻'•)꒳ᵒ꒳ᵎᵎᵎ \n\n忙不过了哦！")
+            alert("Oops! 小手指头太多啦~!(•'╻'•)꒳ᵒ꒳ᵎ忙不过了哦！")
         })
     }
     else {
