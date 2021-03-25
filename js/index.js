@@ -90,9 +90,41 @@ baocun.addEventListener("click", function () {
 function monitorUserActions(canvas) {
     if (document.body.ontouchstart !== undefined) {
         //触屏设备
-        canvas.addEventListener('touchstart', touchStart.bind(null, previousPoint))
-        canvas.addEventListener('touchmove', touchMove.bind(null, previousPoint))
-        canvas.addEventListener('touchcancel', touchCancel)
+
+        canvas.addEventListener('touchstart', function (e) {
+            e.preventDefault()
+            let x, y
+            for (let touch of e.changedTouches) {
+                x = Math.floor(touch.clientX)
+                y = Math.floor(touch.clientY)
+                if (!isEraser) {
+                    // point[touch.identifier] = { x: x, y: y }
+                    drawPoint(x, y, ctx.radius)
+                } else {
+                    ctx.clearRect(x - 5, y - 5, 10, 10)
+                }
+            }
+        })
+        canvas.addEventListener('touchmove', (originalPoint, e) => {
+            e.preventDefault()
+            let x, y, newPoint = {}
+            for (let touch of e.changedTouches) {
+                x = Math.floor(touch.clientX)
+                y = Math.floor(touch.clientY)
+                if (!eraserEnabled) {
+                    //newPoint[touch.identifier] = { x: x, y: y }
+                    drawPoint(x, y, ctx.radius)           //需要添加此函数才不会使得画出来的线在lineWidth变大时不完整
+                    drawLine(originalPoint[touch.identifier].x, originalPoint[touch.identifier].y, newPoint[touch.identifier].x, newPoint[touch.identifier].y)
+                    originalPoint[touch.identifier] = newPoint[touch.identifier]
+                }
+                else {
+                    ctx.clearRect(x - 8, y - 8, 16, 16)
+                }
+            }
+        })
+        canvas.addEventListener('touchcancel', () => {
+            alert("Oops! 是不是你的第六个小指头打断了画画~ !!(•'╻'•)꒳ᵒ꒳ᵎᵎᵎ \n\n乖，听话，最多只能用五个指头哦！")
+        })
     }
     else {
         canvas.addEventListener("mousedown", function (e) {
