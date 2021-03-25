@@ -1,4 +1,13 @@
 let canvas = document.getElementById("main")
+let colorpanel = document.getElementById("colorpanel")
+let toolspanel = document.getElementById("toolspanel")
+let toolEraser = document.getElementById("tool-eraser")
+let toolspenpanel = document.getElementById("toolspenpanel")
+let penwidth = document.querySelectorAll(".penwidth")
+let penline = document.getElementById("penline")
+let baocun = document.getElementById("baocun")
+let clean = document.getElementById("clean")
+let isEraser = false
 let isDrawing = false
 let lineStartPoint = {}
 let lineToPoint = {}
@@ -11,7 +20,73 @@ initializeBrushStyle(ctx)
 //监听用户动作
 monitorUserActions(canvas)
 
+penline.addEventListener("click", function (e) {
+    switch (e.target.id) {
+        case "fine":
+            ctx.lineWidth = 2
+            ctx.radius = 1
+            break;
+        case "middle":
+            ctx.lineWidth = 6
+            ctx.radius = 3
+            break;
+        case "crude":
+            ctx.lineWidth = 10
+            ctx.radius = 5
+            break;
 
+        default:
+            break;
+    }
+
+    if (e.target.className === "penwidth") {
+        penwidth.forEach(function (item) {
+            item.className = "penwidth"
+            if (item === e.target) {
+                item.className = "penwidth active_line"
+            }
+
+        })
+    }
+})
+
+colorpanel.addEventListener("click", function (e) {
+    if (e.target.className === "pencolor") {
+        let pencolor = e.target.getAttribute("data-color")
+        initializeBrushStyle(ctx, pencolor, pencolor, ctx.lineWidth, ctx.radius)
+        let pencolors = document.querySelectorAll(".pencolor")
+        pencolors.forEach(function (item) {
+            item.className = "pencolor"
+            if (pencolor === item.getAttribute("data-color")) {
+                item.className = "pencolor active-colors"
+            }
+        })
+    }
+
+})
+toolEraser.addEventListener("click", function (e) {
+    colorpanel.className = "tools-colors active-tools-colors-none"
+    toolspenpanel.className = "tools-itme draw-pen"
+    this.className = "active"
+    isEraser = true
+})
+toolspenpanel.addEventListener("click", function (e) {
+
+    colorpanel.className = "tools-colors active-tools-colors"
+    toolEraser.className = ""
+    isEraser = false
+    this.className = "tools-itme draw-pen active"
+})
+clean.addEventListener("click", function () {
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+})
+baocun.addEventListener("click", function () {
+    let a = document.createElement("a")
+    a.href = canvas.toDataURL()           //获得图片地址
+    a.target = "_blank"
+    a.download = "image.png"
+    a.click()
+})
 function monitorUserActions(canvas) {
     if (document.body.ontouchstart !== undefined) {
         //触屏设备
@@ -23,15 +98,22 @@ function monitorUserActions(canvas) {
         canvas.addEventListener("mousedown", function (e) {
             isDrawing = true
             lineStartPoint = { x: e.clientX, y: e.clientY }
-            drawPoint()
+            if (isDrawing && !isEraser) {
+                drawPoint()
+            }
+
         })
         canvas.addEventListener("mouseup", function (e) {
             isDrawing = false
         })
         canvas.addEventListener("mousemove", function (e) {
-            if (isDrawing) {
+            if (isDrawing && !isEraser) {
                 lineToPoint = { x: e.clientX, y: e.clientY }
+                drawPoint()
                 drawLine()
+            }
+            if (isDrawing && isEraser) {
+                ctx.clearRect(e.clientX - 8, e.clientY - 8, 16, 16)
             }
 
         })
@@ -49,13 +131,18 @@ function drawLine() {
     ctx.stroke();
     lineStartPoint = lineToPoint
 }
+function clearRect() {
+    ctx.beginPath();
+    ctx.clearRect()
+    ctx.stroke();
+    lineStartPoint = lineToPoint
+}
 
-
-function initializeBrushStyle(ctx) {
-    ctx.fillStyle = "black"
-    ctx.strokeStyle = "black"
-    ctx.lineWidth = 2
-    ctx.radius = 1
+function initializeBrushStyle(ctx, fillStyle = "black", strokeStyle = "black", lineWidth = 2, radius = 1) {
+    ctx.fillStyle = fillStyle
+    ctx.strokeStyle = strokeStyle
+    ctx.lineWidth = lineWidth
+    ctx.radius = radius
 }
 
 function initializeCanvas(canvas) {

@@ -15,36 +15,36 @@
 
     <div class="tools">
         <!-- <input type="color"> -->
-        <ul class="tools-colors">
-            <li id="black" class="active-colors"></li>
-            <li id="yellow"></li>
-            <li id="red"></li>
-            <li id="green"></li>
-            <li id="blue"></li>
+        <ul id="colorpanel" class="tools-colors active-tools-colors">
+            <li class="pencolor active-colors" id="black" data-color="black"></li>
+            <li class="pencolor" id="yellow" data-color="#FF9000"></li>
+            <li class="pencolor" id="red" data-color="#ff4500"></li>
+            <li class="pencolor" id="green" data-color="#00b060"></li>
+            <li class="pencolor" id="blue" data-color="#0a64a4"></li>
         </ul>
-        <ul class="tools-draw">
-            <li class="draw-pen active">
-                <ul class="pen-line">
-                    <li class="fine active_line"></li>
-                    <li class="middle"></li>
-                    <li class="crude"></li>
+        <ul id="toolspanel" class="tools-draw">
+            <li id="toolspenpanel" class="tools-itme draw-pen active">
+                <ul id="penline" class="pen-line">
+                    <li id="fine" class="penwidth active_line"></li>
+                    <li id="middle" class="penwidth"></li>
+                    <li id="crude" class="penwidth"></li>
 
                 </ul>
                 <svg class="icon " aria-hidden="true">
                     <use xlink:href="#i-pen"></use>
                 </svg>
             </li>
-            <li class="active">
+            <li id="tool-eraser">
                 <svg class="icon " aria-hidden="true">
                     <use xlink:href="#i-xiangpica"></use>
                 </svg>
             </li>
-            <li>
+            <li id="clean">
                 <svg class="icon " aria-hidden="true">
                     <use xlink:href="#i-clean"></use>
                 </svg>
             </li>
-            <li>
+            <li id="baocun">
                 <svg class="icon " aria-hidden="true">
                     <use xlink:href="#i-baocun"></use>
                 </svg>

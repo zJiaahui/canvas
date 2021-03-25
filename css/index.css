@@ -10,6 +10,13 @@
     overflow: hidden;
     margin: 0 8px;
  }
+ #main{
+     position: fixed;
+     left: 0;
+     right: 0;
+     overflow: hidden;
+     
+ }
  .tools{
      display:flex;
      align-items: center;
@@ -28,7 +35,7 @@
      list-style-type: none;
      border-radius: 4px;
      border: 1px solid rgba(146, 143, 143,0.2);
-     box-shadow:0 0 2px  rgb(248, 5, 5,0.5);
+    
  }
  .tools-colors>li{
      width: 22px;
@@ -36,6 +43,7 @@
      margin: 0 4px;
      text-align: center;
      border-radius: 4px;
+     cursor: pointer;
  }
 .tools-colors>li#black{
     background-color: black;
@@ -62,6 +70,7 @@
     border-radius: 4px;
     box-shadow:0 0 5px rgba(146, 143, 143,0.4);
     margin: 0 4px;
+    cursor: pointer;
  }
  .draw-pen{
     display: flex;
@@ -82,15 +91,15 @@
     height: 24px;
     background-color: rgb(146, 135, 135);
     margin: 0 8px;
-    
+    cursor: pointer;
  }
- .fine{
+ #fine{
     width: 2px;
  }
- .middle{
+ #middle{
     width: 4px;
  }
- .crude{
+ #crude{
     width: 6px;
  }
 
@@ -109,7 +118,18 @@
     height: 28px;
     box-shadow:0 0 5px rgba(146, 143, 143,1);
 }
-
+.tools-colors.active-tools-colors{
+    box-shadow:0 0 2px  rgb(248, 5, 5,0.5);
+}
+.active-tools-colors-none{
+    display: none;
+}
+#clean:hover,#baocun:hover,#tool-eraser:hover{
+    box-shadow:0 0 2px  rgb(248, 5, 5,0.5);
+}
+#clean:active,#baocun:active{
+    color: #FF4500;
+}
 @media screen and (max-width: 966px) {
     .tools-colors{
         position:fixed;
